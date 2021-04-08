@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Take Exam | {% endblock %}
+
+{% block content %}
+    <div class="columns">
+        <div class="column is-6 is-offset-3">
+            <h1 class="title">Exam</h1>
+
+            <form method="POST" action="{% url 'exam:result' exam.slug %}" >
+                {% csrf_token %}
+
+                {% for q in data %}
+                    <div class="box">
+
+                        <h3 class="question">{{ forloop.counter }}) {{ q.question }}</h3>
+                        <div class="control">
+
+                         {% for a in q.answers %}
+                             <label class="radio">
+                                <input  type="radio" name="{{ q.id }}" id="{{ a.answer }}" value="{{ a.id }}">
+                                 {{ a.answer }}
+                             </label>
+                             <br>
+                         {% endfor %}
+                        </div>
+                        <br>
+                    </div>
+                {% endfor %}
+
+                    <button type='submit'  class="button is-primary text-dark" >Submit</button>
+           </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

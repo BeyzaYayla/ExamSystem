@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block title %}My account | {% endblock %}
+
+{% block content %}
+    <div class="columns">
+        <div class="column is-3 is-offset-1">
+            <h1 class="title">My account</h1>
+
+            <hr>
+
+            <h2 class="subtitle">Account information</h2>
+
+            <p><strong>Name: </strong>{{ request.user.get_full_name }}</p>
+            <p><strong>E-mail: </strong>{{ request.user.email }}</p>
+
+            <hr>
+
+            {% if request.user.groups.all.0.name == 'instructor' %}
+                <a href="{% url 'exam:create_exam' %}" class="button is-primary">Create Exam</a>
+                <hr>
+                <h2 class="subtitle">My Exams</h2>
+                {% if exams %}
+                    {% for exam in exams %}
+                        <p>
+                            <a href="{% url 'exam:scores' exam.slug %}">{{ exam }}</a>
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <p>You don't have any exams yet...</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

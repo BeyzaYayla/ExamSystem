@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'core/base.html' %}
+{% block title %}Result | {% endblock %}
+
+{% block content %}
+   <div>
+
+       <h1 class="title is-1 has-text-centered">{{ data.exam }} Result</h1>
+
+       <br>
+       <div class="box">
+           <h2 class="subtitle is-3 has-text-centered">You got {{ data.correct }} question/s correct!</h2>
+       </div>
+
+       <br>
+       <div class="box">
+           <h2 class="subtitle is-3 has-text-centered">You got {{ data.incorrect }} question/s incorrect!</h2>
+       </div>
+
+   </div>
+{% endblock %}

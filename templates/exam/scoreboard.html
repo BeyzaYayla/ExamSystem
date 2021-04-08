@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Scoreboard | {% endblock %}
+
+{% block content %}
+    <div>
+       <h1 class="title">{{ exam }} Scoreboard</h1>
+    </div>
+    <hr>
+    <table class="table is-striped">
+        <thead>
+            <tr>
+                <th> Student Number</th>
+                <th> Student Name</th>
+                <th> Correct Answers </th>
+                <th> Incorrect Answers </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for score in scores %}
+
+                <tr align="center">
+                    {% for student in score.student.all %}
+                        <td>{{student.id}}</td>
+                        <td>{{student.get_full_name}}</td>
+                    {% endfor %}
+                    <td>{{ score.correct }}</td>
+                    <td>{{ score.incorrect }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

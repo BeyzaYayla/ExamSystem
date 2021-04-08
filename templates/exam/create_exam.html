@@ -1,0 +1,63 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Create Exam | {% endblock %}
+
+{% block content %}
+    <div class="columns">
+        <div class="column is-6 is-offset-3">
+            <h1 class="title">Create Exam</h1>
+
+            <form method="post" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input type="hidden" name="next" value="{{ next }}">
+
+                <div class="field">
+                    <label>Title</label>
+
+                    <div class="control">
+                        <input type="text" class="input" name="title" id="id_title">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Number of questions:</label>
+
+                    <div class="control">
+                        <input type="number" min="0" max="100" class="input" name="numQuestion" id="id_numQuestion">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Start Date</label>
+
+                    <div class="control">
+                        <input type="datetime-local" class="input" name="startDate" id="id_startDate">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>End Date</label>
+
+                    <div class="control">
+                        <input type="datetime-local" class="input" name="endDate" id="id_endDate">
+                    </div>
+                </div>
+
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p> {{ error }} </p>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-dark is-uppercase">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

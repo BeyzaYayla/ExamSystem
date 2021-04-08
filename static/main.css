@@ -1,0 +1,23 @@
+form .helptext {
+    font-size: 12px;
+    color: #ccc;
+}
+.section{
+    padding-top: 24px;
+    padding-left: 48px;
+    padding-right: 48px;
+}
+.card.exam{
+    background-color: #6495ed;
+    border-width:1px;
+    border-radius:15px;
+}
+.card-footer-item.viewtext{
+    color: #0b2d63;
+}
+.title.examtitle, .subtitle.examtitle {
+    color: #e8e8e8;
+}
+form ul:not(.errorlist) {
+    display: none;
+}

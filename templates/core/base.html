@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}{% endblock %}Exam App</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+
+        <script src="{% static 'main.js' %}"></script>
+	</head>
+
+	<body>
+		<nav class="navbar is-dark">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="{% url 'frontpage' %}">Exam App</a>
+
+				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+
+			<div id="main-navbar" class="navbar-menu" >
+				<div class="navbar-start">
+
+				</div>
+				<div class="navbar-end">
+
+					{% if request.user.is_authenticated %}
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a href="{% url 'myaccount' %}" class="button is-primary">My account</a>
+                                <a href="{% url 'logout' %}" class="button is-danger">Log out</a>
+                            </div>
+                        </div>
+					{% else %}
+						<div class="navbar-item">
+							<div class="buttons">
+								<a href="{% url 'register' %}" class="button is-primary"><strong>Sign up</strong></a>
+								<a href="{% url 'login' %}" class="button is-light">Log in</a>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
+
+		<section class="section">
+			{% block content %}
+            {% endblock %}
+		</section>
+
+		{% block scripts %}
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends 'core/base.html' %}
+{% block title %}Welcome | {% endblock %}
+
+{% block content %}
+
+    <div class="columns is-multiline mb-6">
+        <div class="column is-12 has-text-centered mt-6 mb-6">
+            <h2 class="is-size-3">Exams</h2>
+        </div>
+
+        {% if exam_list %}
+
+            {% with exam_list as list_exams %}
+                {% include 'exam/exam_list.html' %}
+            {% endwith %}
+
+        {% else %}
+            <p>No exams are available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

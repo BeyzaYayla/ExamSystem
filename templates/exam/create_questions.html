@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Create Exam | {% endblock %}
+
+{% block content %}
+
+    <div class="columns">
+        <div class="column is-6 is-offset-3">
+            <h1 class="title">Create Question {{ question_num }}</h1>
+            <p>Write your question and choices make sure to check one checkbox that is answer of the question</p>
+            <form method="post" action="">
+                {% csrf_token %}
+
+                <input type="hidden" name="next" value="{{ next }}">
+
+                <div class="field">
+                    <label>Question</label>
+                    <div class="control">
+                        <input type="text" class="input" name="question_text" id="id_question_text">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Choice 1</label>
+                    <div class="control">
+                        <input type="checkbox" id="id_choice1_correctness" name="choice1_correctness">
+                        <input type="text" class="input" name="choice1_text" id="id_choice1_text">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Choice 2</label>
+                    <div class="control">
+                        <input type="checkbox" id="id_choice2_correctness" name="choice2_correctness">
+                        <input type="text" class="input" name="choice2_text" id="id_choice2_text">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Choice 3</label>
+                    <div class="control">
+                        <input type="checkbox" id="id_choice3_correctness" name="choice3_correctness">
+                        <input type="text" class="input" name="choice3_text" id="id_choice3_text">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Choice 4</label>
+                    <div class="control">
+                        <input type="checkbox" id="id_choice4_correctness" name="choice4_correctness">
+                        <input type="text" class="input" name="choice4_text" id="id_choice4_text">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

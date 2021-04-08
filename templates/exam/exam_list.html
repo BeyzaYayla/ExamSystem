@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<div class="columns is-multiline">
+    {% for ex in list_exams %}
+        <div class="column is-6">
+            <div class="card exam">
+                <div class="card-content">
+                            <p class="title is-4 examtitle">{{ ex.title }}</p>
+                            <p class="subtitle is-6 examtitle">{{ ex.numQuestion }} Question</p>
+                            <p>Start Date: {{ ex.startDate }}</p>
+                            <p>End Date: {{ ex.endDate }}</p>
+                </div>
+
+                <footer class="card-footer">
+                    <a href="{% url 'exam:take_exam' ex.slug %}" class="card-footer-item viewtext">Take Exam</a>
+                </footer>
+            </div>
+        </div>
+    {% endfor %}
+</div>
